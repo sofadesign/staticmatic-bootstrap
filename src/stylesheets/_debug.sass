@@ -1,0 +1,12 @@
+@import library/css3/opacity
+
+!debug ||= true
+!debug_background_color ||= rgba(180, 180, 180, 0.4)
+
+=debug-show-grid(!debug)
+  @if !debug
+    +showgrid
+
+=debug-background(!debug_background_color)
+  @if !debug
+    background-color= !debug_background_color
