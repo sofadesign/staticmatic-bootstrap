@@ -8,7 +8,7 @@ http_path    = "/"                # root when deployed
 css_dir      = "site/stylesheets" # final CSS
 images_dir   = "site/images"      # final images
 http_images_path = "/images"
-
+http_stylesheets_path = "/stylesheets"
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true

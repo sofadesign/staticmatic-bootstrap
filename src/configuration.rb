@@ -23,3 +23,10 @@ configuration.haml_options = {
   #:format => :html5,
   :attr_wrapper => '"'
 }
+
+# LOAD extra lib
+lib_path = "#{Compass.configuration.project_path}src/lib/*.rb"
+puts "Loading extra libs from lib path #{lib_path}"
+Dir[lib_path].each do |lib|
+  require lib
+end
