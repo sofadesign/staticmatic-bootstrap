@@ -9,13 +9,14 @@ module Sass::Script
       Sass::Script::String.new(str.to_s.sub(/#{reg.to_s}/, rep.to_s))
     end
     
-    def timestamped_path(path)
+    def timestamped_path(path, relative = true)
       assert_type path, :String
       file = full_path(path)
+      public_path = relative ? path : public_path(path)
       begin
-        [public_path(path), File.mtime(file).to_i] * "?"
+        [public_path, File.mtime(file).to_i] * "?"
       rescue
-        public_path(path)
+        public_path
       end
     end
     
