@@ -1,0 +1,103 @@
+My Website name
+===============
+
+This a [staticmatic](http://staticmatic.rubyforge.org/) project, used to generate a static website.
+
+It uses
+
+* [Compass](http://compass-style.org/) CSS framework
+* [CSS Blueprint](http://www.blueprintcss.org/) CSS framework
+* [Rake](http://rake.rubyforge.org/) that provides tasks
+* [Bundler](http://gembundler.com/) manages project's dependencies
+* some ruby flavor…
+
+
+It also uses those languages
+
+* [Haml](http://haml-lang.com/) to describe HTML
+* [Sass](http://sass-lang.com/) for CSS
+
+
+
+Requirements
+------------
+
+It requires  [Ruby](http://www.ruby-lang.org/fr/downloads/) et [rubygems](http://docs.rubygems.org/read/chapter/3) to be already installed. On OS X Leopard and >, it's available by default.
+
+Rubygems 1.3.6 or > is required (use `gem --version` to check the installed version), so you might need to update it:
+
+    sudo gem update --system
+
+Then install `bundler` gem:
+
+    sudo gem install bundler
+    
+Now you can use it to simply install all required gems:
+
+    sudo bundle install
+    
+    
+Directories
+-------------------------
+
+    + site/             # Built HTML website (html + css + assets)
+    + src/              # haml/sass… sources of the project and assets
+                        #   (images, javascripts…)
+      - assets/         # Images, Javascripts, images for stylesheets
+      - helpers/        # Ruby helpers used in Haml sources
+      - layouts/        # Haml layouts
+      - lib/            # Ruby classes made available for by StaticMatic
+      - pages/          # Haml pages
+      - stylesheets/    # Sass stylesheets
+
+Run Rake tasks
+------------------------
+
+In this project folder, run `rake` command to execute a task.  
+Run `rake -T` to see the list of available tasks.
+
+    eac:prototype02 fabrice$ rake -T
+    (in /Users/fabrice/Sites/staticmatic-bootstrap)
+    rake assets:copy      # Copy site assets (images, javascripts…)
+    rake build            # Builds the site
+    rake clear            # Clears the site folder
+    rake deploy           # Clears and generates new styles, builds and deploys
+    rake preview          # Runs preview
+    rake styles:clear     # Clears the styles
+    rake styles:generate  # Generates new styles
+
+
+    
+Preview
+-------
+
+
+Run 
+
+    rake preview
+
+Then in your browser, go to: `http://localhost:3000` (port number can be change in configuration. See below.)
+
+
+Then modify your sources: `src/layouts/application.haml`, `src/pages/index.haml`, `src/stylesheets/screen.haml`…
+
+Remember that assets are copied from `src/assets` to `site/` at the begining of rake tasks like `preview` or `build`. So if you add or update assets, you need to relaunch your preview to see changes.
+
+
+Build and publish
+-----------------
+
+Launch 
+
+    rake build
+    
+and copy your `site/` folder in your web server. You can also use `rake deploy` to pull your files on your server using rsync (set `ssh_user` and `remote_root` in `Rakefile` before).
+
+
+Configuration
+-------------
+
+Edit `config.rb` (compass configuration) and `src/configuration.rb` (staticmatic project configuration).
+
+
+

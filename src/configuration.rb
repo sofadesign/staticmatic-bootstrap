@@ -1,3 +1,6 @@
+#
+# STATIC MATIC PROJECT CONFIG
+#
 require 'compass'
 
 # Parse the Compass config
