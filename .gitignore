@@ -1,1 +1,10 @@
 .sass-cache/
+vendor/bundle/
+
+# site/
+#
+# We want to include this directory but keep it empty
+# So we added a .gitignore in it containing
+#   *
+#   !.gitignore
+#
