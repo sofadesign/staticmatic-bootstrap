@@ -1,3 +1,9 @@
 source "http://rubygems.org"
-gem 'staticmatic'
-gem 'compass'
+gem "rack"
+gem "staticmatic"
+gem "haml"
+gem "compass"
+gem "coderay"
+gem "haml-coderay"
+gem "grit"
+gem "RedCloth"

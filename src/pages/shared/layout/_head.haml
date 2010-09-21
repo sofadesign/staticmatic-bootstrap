@@ -4,6 +4,10 @@
   = page_title
 - if @page_description
   %meta{:name => "description", :content => @page_description}
-= stylesheets :screen
-%script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
-= javascripts('application')
+= stylesheets :site
+= javascripts('http://www.google.com/jsapi')
+:javascript
+  google.load("jquery", "1.4.2");
+  // google.load("jqueryui", "1.8.1");
+  // google.load("chrome-frame", "1.0.2");
+= javascripts('modernizr-1.5.min', 'application')

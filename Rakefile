@@ -1,3 +1,7 @@
+require "rubygems"
+require "bundler"
+Bundler.setup
+
 ssh_user = "user@domain.com" # for rsync deployment
 remote_root = "~/path/to/remote/" # for rsync deployment
 
@@ -52,7 +56,7 @@ namespace :styles do
   desc "Generates new styles"
   task :generate => :clear do
     puts "*** Generating styles ***"
-    system "bundle exec compass"
+    system "bundle exec compass compile"
   end
 end
 
