@@ -6,38 +6,28 @@ module Sass::Script::Functions
     #
     # (see http://code.google.com/intl/fr-FR/speed/page-speed/docs/caching.html#LeverageBrowserCaching)
     #
-    # Example:
+    # Examples:
     #
-    #     timestamped_path('css-sprite.png') # => /stylesheets/css-sprite.png?1272472033
+    #     timestamped_path('css-sprite.png') # => css-sprite.png?1272472033
+    #
+    #     background: transparent url(timestamped_path("pattern.png")) repeat 
+    #       # => background: transparent url(pattern.png?1272472045) repeat
     #
     def timestamped_path(path)
       assert_type path, :String
       path = unquote(path)
-      file = full_path(path)
+      file = filepath(path)
       begin
-        Sass::Script::String.new([public_path(path).to_s, File.mtime(file).to_i] * "?")
+        Sass::Script::String.new([path.to_s, File.mtime(file).to_i] * "?")
       rescue
-        public_path(path)
+        path
       end
-    end
-  
-    # Return the full public path for a given relative path of a file stored in the stylesheets directory
-    #
-    # Example: for a file <tt>css-sprite.png</tt> stored in <tt>stylesheets/</tt> dir
-    #    
-    #      public_path('css-sprite.png') # => /stylesheets/css-sprite.png
-    #
-    def public_path(path)
-      assert_type path, :String
-      http_path = Compass.configuration.http_stylesheets_path || ''
-      public_path = File.join(http_path, unquote(path).to_s)
-      Sass::Script::String.new(public_path)
     end
   
     private
   
     # Returns the real path for a given relative path of a file
-    def full_path(path)
+    def filepath(path)
       File.join File.expand_path(Compass.configuration.project_path), Compass.configuration.css_dir, path.to_s
     end
   end

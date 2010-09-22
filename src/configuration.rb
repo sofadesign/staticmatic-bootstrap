@@ -33,7 +33,7 @@ configuration.haml_options = {
 }
 
 # LOAD extra lib
-lib_path = "#{Compass.configuration.project_path}src/lib/*.rb"
+lib_path = "#{Compass.configuration.project_path}/src/lib/*.rb"
 puts "Loading extra libs from lib path #{lib_path}"
 Dir[lib_path].each do |lib|
   require lib
