@@ -1,12 +1,13 @@
 @import library/css3/opacity
 
-!debug ||= true
-!debug_background_color ||= rgba(180, 180, 180, 0.4)
+// TODO update with new syntax ...
+$debug: true !default
+$debug_background_color: rgba(180, 180, 180, 0.4) !default
 
-=debug-show-grid(!debug)
-  @if !debug
+=debug-show-grid($debug)
+  @if $debug
     +showgrid
 
-=debug-background(!debug_background_color)
-  @if !debug
-    background-color= !debug_background_color
+=debug-background($debug_background_color)
+  @if $debug
+    background-color: $debug_background_color
